@@ -1,73 +1,260 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spider Client Menus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 9999;
+            pointer-events: none; /* Make the overlay click-throughable */
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+            background-color: #1e1e1e;
+        }
+
+        nav img {
+            width: 150px;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            margin-top: 3px;
+        }
+
+        .nav-links ul li {
+            display: inline-block;
+            margin: 3px;
+        }
+
+        .nav-links ul li a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Header Section */
+        .sub-header {
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .text-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .text-box:hover {
+            transform: translate(-50%, -50%) scale(1.15); 
+        }
+
+        .text-box h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .text-box p {
+            font-size: 18px;
+        }
+
+        .text-box a {
+            background-color: #1400f5;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s ease;  
+        }
+
+        .text-box a:hover {
+            background-color: #0045ff;
+            transform: scale(1.15); 
+        }
+
+        /* Download Section */
+.download {
+    padding: 50px 10%;
+    background-color: #1e1e1e;
+}
+
+.download h5 {
+    color: #6e6eff;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+}
+
+.roww {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.download-col {
+    flex-basis: 30%;
+    background-color: #2e2e2e;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(110, 110, 255, 0.7);
+    transition: transform 0.3s ease;
+    height: auto; /* Adjust height to fit content */
+    position: relative; /* For positioning internal elements */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.download-col:hover {
+    transform: scale(1.05); /* Slightly reduced scale for a smoother effect */
+}
+
+.download-col h6 {
+    color: #6e6eff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.download-col p {
+    font-size: 18px;
+    margin: 0; /* Remove default margin */
+}
+
+.hero-btn2 {
+    display: inline-block;
+    margin-top: 20px; /* Adjust margin to fit within the container */
+    padding: 10px 20px; /* Adjust padding to fit the content */
+    background-color: #6e6eff;
+    color: white;
+    font-size: 16px; /* Adjusted font-size */
+    width: auto; /* Ensure button width adjusts to content */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.hero-btn2:hover {
+    background-color: #5757f7;
+    transform: scale(1.05); /* Slightly reduced scale for a smoother effect */
+}
+    </style>
 </head>
 <body>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
     <section class="sub-header">
         <nav>
-            <a href="index.html"><img src="images/logo3.png"></a>
+            <a href="index.html">
+                <img src="https://cdn.glitch.global/4f3375da-7ba8-4403-9e1e-6d0a29a3aa8a/logo_wide-removebg-preview.png?v=1725466169098" alt="Logo" style="transform: scale(1.3);">
+            </a>
             <div class="nav-links">
                 <ul>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/index.html">HOME</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/about.html">ABOUT</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/download.html">DOWNLOAD</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/features.html">FEATURES</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/logs.html">LOGS</a></li>
-                    <li><a href="">CONTACT</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="download.html">DOWNLOAD</a></li>
+                    <li><a href="features.html">FEATURES</a></li>
+                    
                 </ul>
             </div>
         </nav>
-
-        <div class="text-box">
-            <h1>Download</h1>
-            <p>This is where you can download the menu etc.</p>
-        </div>
     </section>
 
-
-    <!------- Download -------->
+    <!-- Download Section -->
     <section class="download">
         <h5>Downloads</h5>
-
         <div class="roww">
             <div class="download-col">
-                <h6>Download Spider CLient V9</h6>
-                <pp><a href="https://cdn.discordapp.com/attachments/1206417330347970570/1237008700716224593/Spider_Client_V9.dll?ex=6647ed60&is=66469be0&hm=ed649abb89af31b004d3a989d53d1101399ea2f0f48bf3d843572347623786a2&" class="hero-btn2">Download V9</a></pp>
+                <h6>Download Spider Client Menu</h6>
+                <h1 style="font-size: 12px; position: relative; top: -20px;">(Discord channel invite)</h1>
+                <p><a href="https://discord.gg/p2mjMA2yUR" class="hero-btn2" style="position: relative; top: -20px;">Download Link</a></p>
             </div>
             <div class="download-col">
-                <h6>Download Project Modding</h6>
-                <pp><a href="https://cdn.discordapp.com/attachments/1209342617356210238/1240818240519802930/PROJECT_MODDING.apk?ex=664b3d49&is=6649ebc9&hm=b8308bcb01c1e48826dd96abe28c19fb4fcee77482c652f18beab3c3d9e4e516&" class="hero-btn2">Download Apk</a></pp>
+                <h6>Download Spider Client Source</h6>
+                <h1 style="font-size: 12px; position: relative; top: -20px;">(This can be found in the discord)</h1>
+                <p><a href="https://discord.gg/p2mjMA2yUR" class="hero-btn2" style="position: relative; top: -20px;">Download Link</a></p>
             </div>
-            <div class="download-col">
-                <h6>Spider Client V9 Source</h6>
-                <pp><a href="" class="hero-btn2">COMING SOON!</a></pp>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="download">
-        <div class="roww">
             <div class="download-col">
                 <h6>Go To Youtube</h6>
-                <pp><a href="https://www.youtube.com/@CkcsModding/videos" class="hero-btn2">Open Youtube</a></pp>
-            </div>
-            <div class="download-col">
-                <h6>Go To Discord</h6>
-                <pp><a href="https://discord.gg/swXssGQZgm" class="hero-btn2">Open Dicord</a></pp>
-            </div>
-            <div class="download-col">
-                <h6>COMING SOON!</h6>
-                <pp><a href="" class="hero-btn2">COMING SOON!</a></pp>
+                <p><a href="https://www.youtube.com/@CkcsModding/videos" class="hero-btn2">Open Youtube</a></p>
             </div>
         </div>
     </section>
 
-
-
-
+    <script>
+        // Function to handle navigation with fade-out effect
+        function navigate(event, url) {
+            event.preventDefault(); // Prevent the default link behavior
+            const overlay = document.getElementById('overlay');
+            
+            // Start fading out the overlay
+            overlay.style.opacity = '1';
+            
+            // Redirect after the fade-out
+            setTimeout(() => {
+                window.location.href = url; // Redirect to the URL
+            }, 500); // Match this duration with the CSS transition duration
+        }
+        
+        // Attach event listeners to nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (event) => {
+                navigate(event, link.href);
+            });
+        });
+        
+        // Initial page load - fade out the overlay after content loads
+        window.addEventListener('load', () => {
+            const overlay = document.getElementById('overlay');
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+            }, 500); // Delay the fade-out to give time for the content to render
+        });
+    </script>
 </body>
 </html>

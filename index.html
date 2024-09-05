@@ -1,89 +1,328 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   <meta name="viewport" content="with=device-width, initial-scale=1.0">
-    <title>Spider Client Menu's</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spider Client Menu's - Tiled Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #121212;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background-image: url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            height: 100vh;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+        }
+
+        nav img {
+            width: 150px;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            margin-top: 3px;
+        }
+
+        .nav-links ul li {
+            display: inline-block;
+            margin: 3px;
+        }
+
+        .nav-links ul li a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .text-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .text-box h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .text-box p {
+            font-size: 18px;
+        }
+
+        .text-box a {
+            background-color: #1400f5;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .havee, .wanted, .pictures {
+            padding: 50px 10%;
+            background-color: #1e1e1e;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .have-col, .want-col {
+            flex-basis: 30%;
+            margin: 10px 0;
+            text-align: left;
+            color: #e0e0e0;
+            padding: 20px;
+            border: 2px solid #6e6eff; /* Border color */
+            border-radius: 5px; /* Optional: rounded corners */
+            box-shadow: 0 0 10px rgba(110, 110, 255, 0.7); /* Glow effect */
+        }
+
+        .have-col h3, .want-col h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #6e6eff;
+        }
+
+        .have-col p, .want-col p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .pictures {
+            padding: 50px 10%;
+            background-color: #1e1e1e;
+            text-align: center; 
+        }
+
+        /* Tiled Gallery */
+        .pictures .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Space between images */
+        }
+
+        .pictures img {
+            width: calc(33.33% - 20px); /* Three images per row */
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .pictures img:hover {
+            transform: scale(1.5);
+        }
+
+        @media screen and (max-width: 768px) {
+            .pictures img {
+                width: calc(50% - 20px); /* Two images per row on smaller screens */
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .pictures img {
+                width: calc(100% - 20px); /* One image per row on very small screens */
+            }
+        }
+
+        /* Lightbox Effect */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            padding-top: 10%;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox img {
+            margin: auto;
+            display: block;
+            width: 140%; /* Scale image by 40% larger */
+            max-width: 1000px; /* Optional: Adjust as needed */
+        }
+
+        .lightbox:target {
+            display: block;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 9999;
+            pointer-events: none; /* Make the overlay click-throughable */
+        }
+    </style>
 </head>
 <body>
-    <section class="header">
-        <nav>
-            <a href="index.html"><img src="images/logo3.png"></a>
-            <div class="nav-links">
-                <ul>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/index.html">HOME</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/about.html">ABOUT</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/download.html">DOWNLOAD</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/features.html">FEATURES</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/logs.html">LOGS</a></li>
-                    <li><a href="">CONTACT</a></li>
-                </ul>
+
+    <div class="overlay" id="overlay"></div>
+        <section class="header">
+            <nav>
+                <a href="index.html">
+                  <img src="https://cdn.glitch.global/4f3375da-7ba8-4403-9e1e-6d0a29a3aa8a/logo_wide-removebg-preview.png?v=1725466169098" 
+                       alt="Logo" 
+                       style="transform: scale(1.3);">
+                </a>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="download.html">DOWNLOAD</a></li>
+                        <li><a href="features.html">FEATURES</a></li>
+                        
+                        
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="text-box">
+                <h1>Spider Client Mod Menu</h1>
+                <p>This is one of the best Gorilla Tag mod menus. If you want to learn more, please go to the about page.</p>
+                <br>
+                <a style="color:#bfc6ff;" href="about.html" class="hero-btn">Visit About</a>
             </div>
-        </nav>
+        </section>
 
-        <div class="text-box">
-            <h1>Spider Client Mod Menu </h1>
-            <p>This is one of the best gorilla tag mod menus. if you want to learn more please go to the about page.</p>
-            <a href="https://spiderclient.github.io/Spider-Client-Websiteee/about.html" class="hero-btn">Visit About to learn More!</a>
-        </div>
-    </section>
-
-    <!------- What We Have -------->
-    <section class="havee">
-        <h1>What We Have</h1>
-
-        <div class="row">
-            <div class="have-col">
-                <h3>Menu</h3>
-                <p3><b>SPIDER CLIENT MENU!</b> Go to about for more information</p3>
-            </div>
-            <div class="have-col">
-                <h3>Game</h3>
-                <p3><b>PROJECT MODDING!</b> Go to about for more information</p3>
-            </div>
-            <div class="have-col">
-                <h3>Youtube/Discord</h3>
-                <p3><b>CKC's MODDING! And Spider CLient Discord</b> Go to about for more information</p3>
-            </div>
-        </div>
-
-    </section>
-
-    <!------- What We Want -------->
-
-    <section class="wanted">
-        <h1>What We Want</h1>
-
-        <div class="row">
-            <div class="want-col">
-                <h3>Menu</h3>
-                <p1><b>We want people to be happy and use the menu.</b></p1>
-            </div>
-            <div class="want-col">
-                <h3>Game</h3>
-                <p1><b>We want you to play with mods without a pc.</p1>
-            </div>
-            <div class="want-col">
-                <h3>Youtube/Discord</h3>
-                <p1><b>We want a lot of members in the discord<br> and to growthe youtube channel.</b></p1>
-            </div>
-        </div>
-    </section>
-
-    <!------- Images -------->
-    <section class="pictures">
-        <h1>Images</h1>
-        <p>This will show images of the menu and stuff.</p>
-
-        <div class="row6">
-            <div class="want-col">
-                <img src="images/discord3.png"
-                <div class="layer">
-                    <h3>DISCORD</h3>
+        <!------- What We Have -------->
+        <section class="havee">
+            <h1>What We Have</h1>
+            <div class="row">
+                <div class="have-col">
+                    <h3>Menu</h3>
+                    <p><b>SPIDER CLIENT MENU!</b> Go to about for more information</p>
+                </div>
+                <div class="have-col">
+                    <h3>Game</h3>
+                    <p><b>PROJECT MODDING!</b> Go to about for more information</p>
+                </div>
+                <div class="have-col">
+                    <h3>Youtube/Discord</h3>
+                    <p><b>CKC's MODDING! And Spider Client Discord</b> Go to about for more information</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-    </section>
+        <!------- What We Want -------->
+        <section class="wanted">
+            <h1>What We Want</h1>
+            <div class="row">
+                <div class="want-col">
+                    <h3>Menu</h3>
+                    <p><b>We hope that people enjoy the menu and enjoy its features.</b></p>
+                </div>
+                <div class="want-col">
+                    <h3>Game</h3>
+                    <p><b>We want you to play with mods without a PC.</b></p>
+                </div>
+                <div class="want-col">
+                    <h3>Youtube/Discord</h3>
+                    <p><b>We want a lot of members in the Discord and to grow the YouTube channel.</b></p>
+                </div>
+            </div>
+        </section>
+
+        <!------- Images -------->
+        <section class="pictures">
+            <h1>Images</h1>
+            <p>This will show images of the menu and stuff.</p>
+            <div class="row">
+                <a href="#img1"><img src="https://cdn.glitch.global/4f3375da-7ba8-4403-9e1e-6d0a29a3aa8a/vortex.png?v=1725462012496" alt="Discord"></a>
+                <a href="#img2"><img src="https://cdn.glitch.global/4f3375da-7ba8-4403-9e1e-6d0a29a3aa8a/menu.png?v=1725462824213" alt="Menu"></a>
+            </div>
+            
+            <!-- Lightbox Modals -->
+            <div id="img1" class="lightbox">
+                <a href="#" class="close">&times;</a>
+                <img src="https://cdn.glitch.global/4f3375da-7ba8-4403-9e1e-6d0a29a3aa8a/vortex.png?v=1725462012496" alt="Discord">
+            </div>
+            <div id="img2" class="lightbox">
+                <a href="#" class="close">&times;</a>
+                <img src="https://cdn.glitch.global/4f3375da-7ba8-4403-9e1e-6d0a29a3aa8a/menu.png?v=1725462824213" alt="Menu">
+            </div>
+        </section>
+    </div>
+    
+     <script>
+        // Function to handle navigation with fade-out effect
+        function navigate(event, url) {
+            event.preventDefault(); // Prevent the default link behavior
+            const overlay = document.getElementById('overlay');
+            
+            // Start fading out the overlay
+            overlay.style.opacity = '1';
+            
+            // Redirect after the fade-out
+            setTimeout(() => {
+                window.location.href = url; // Redirect to the URL
+            }, 500); // Match this duration with the CSS transition duration
+        }
+        
+        // Attach event listeners to nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (event) => {
+                navigate(event, link.href);
+            });
+        });
+        
+        // Initial page load - fade out the overlay after content loads
+        window.addEventListener('load', () => {
+            const overlay = document.getElementById('overlay');
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+            }, 500); // Delay the fade-out to give time for the content to render
+        });
+    </script>
 </body>
 </html>

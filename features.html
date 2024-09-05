@@ -1,374 +1,408 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-   <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spider Client Menus</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 9999;
+            pointer-events: none; /* Make the overlay click-throughable */
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #121212;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background-image: url('images/background.jpg'); /* Placeholder for your header background */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            height: 28vh;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 10%;
+        }
+
+        nav img {
+            width: 150px;
+            transform: scale(1.3); /* Adjust as needed */
+        }
+
+        .nav-links ul {
+            list-style: none;
+            margin-top: 3px;
+        }
+
+        .nav-links ul li {
+            display: inline-block;
+            margin: 3px;
+        }
+
+        .nav-links ul li a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .text-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .text-box h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .text-box p {
+            font-size: 18px;
+        }
+
+        .text-box a {
+            background-color: #1400f5;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .section {
+            padding: 50px 10%;
+            background-color: #1e1e1e;
+        }
+
+        .section h1 {
+            margin-bottom: 30px;
+            font-size: 36px;
+            color: #6e6eff;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .col {
+            flex-basis: 30%;
+            margin: 10px 0;
+            text-align: left;
+            color: #e0e0e0;
+            padding: 20px;
+            border: 2px solid #6e6eff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(110, 110, 255, 0.7);
+        }
+
+        .col h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #6e6eff;
+        }
+
+        .col p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Scrolling Effect */
+        .scroll-container {
+            overflow: hidden;
+            position: relative;
+            height: 300px; /* Adjust based on your content */
+        }
+
+        .scroll-content {
+            display: flex;
+            flex-direction: column;
+            animation: scroll 120s linear infinite;
+        }
+
+        .feature-list ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px; /* Adjust spacing between items */
+        }
+        @keyframes scroll {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        /* Lightbox Effect */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            padding-top: 10%;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .lightbox img {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .lightbox:target {
+            display: block;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+    
+    </style>
 </head>
 <body>
-    <section class="sub-header">
+    <div class="overlay" id="overlay"></div>
+
+    <section class="header">
         <nav>
-            <a href="index.html"><img src="images/logo3.png"></a>
+            <a href="index.html">
+                <img src="https://cdn.glitch.global/4f3375da-7ba8-4403-9e1e-6d0a29a3aa8a/logo_wide-removebg-preview.png?v=1725466169098" alt="Logo"> <!-- Replace with your logo -->
+            </a>
             <div class="nav-links">
                 <ul>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/index.html">HOME</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/about.html">ABOUT</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/download.html">DOWNLOAD</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/features.html">FEATURES</a></li>
-                    <li><a href="https://spiderclient.github.io/Spider-Client-Websiteee/logs.html">LOGS</a></li>
-                    <li><a href="">CONTACT</a></li>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="download.html">DOWNLOAD</a></li>
+                    <li><a href="features.html">FEATURES</a></li>
+                    
                 </ul>
             </div>
         </nav>
 
         <div class="text-box">
-            <h1>Features</h1>
+            <h1>Spider Client Menus</h1>
             <p>This shows you what is on the menus.</p>
         </div>
     </section>
 
-
-    <!------- Download -------->
-    <section class="havee">
-
-        <div class="have-col">
-            <h3>Spider Client V9 Features</h3>
-            <p7>
-                <b>
-                    <br>
-                    "Settings"<br>
-                    "Save Buttons"<br>
-                    "Load Buttons"<br>
-                    "Leave Lobby"<br>
-                    "Join Random"<br>
-                    "Quit Application"<br>
-                    "Platforms"<br>
-                    "Platforms V2"<br>
-                    "Long Arms"<br>
-                    "Weird Long Arms"<br>
-                    "Super Monkey"<br>
-                    "No Clip"<br>
-                    "Anti Report"<br>
-                    "Create Public"<br>
-                    "Create Private"<br>
-                    "Connect To EU Servers"<br>
-                    "Connect To USW Servers"<br>
-                    "Connect To USA Servers"<br>
-                    "Disable Network Triggers"<br>
-                    "Disable Try On Room"<br>
-                    "Disable QuitBox"<br>
-                    "Red SkyBox"<br>
-                    "Blue SkyBox"<br>
-                    "Green SkyBox"<br>
-                    "Black SkyBox"<br>
-                    "Anti Afk Kick"<br>
-                    "Spam First Cosmetic Spot"<br>
-                    "Spam Second Cosmetic Spot"<br>
-                    "Spam Third Cosmetic Spot"<br>
-                    "Spam All Cosmetic Spot"<br>
-                    "Unreleased Sweater"<br>
-                    "Finger Paniter"<br>
-                    "Admin Badge"<br>
-                    "Tracers"<br>
-                    "Tracers Orbit"<br>
-                    "Beacons"<br>
-                    "ESP"<br>
-                    "Snake ESP"<br>
-                    "Box ESP"<br>
-                    "Bone ESP"<br>
-                    "2D Monkes"<br>
-                    "Big Monkes"<br>
-                    "Small Monkes"<br>
-                    "Tall Monkes"<br>
-                    "Fix Monkes"<br>
-                    "Speed Boost"<br>
-                    "No Tag Freeze"<br>
-                    "PBBV Walk"<br>
-                    "Size Changer"<br>
-                    "Bees"<br>
-                    "Hands In Head"<br>
-                    "Auto Jump"<br>
-                    "Auto Pinch Climb"<br>
-                    "Fake Oculas Menu"<br>
-                    "Velicity Counter"<br>
-                    "Right Arm Gun"<br>
-                    "Left Arm Gun"<br>
-                    "Spider Monke"<br>
-                    "Weird Walk"<br>
-                    "Playspace Abuser"<br>
-                    "Walk Backwards"<br>
-                    "Lag Rig"<br>
-                    "Bees Arms"<br>
-                    "Spaz Self"<br>
-                    "Head Spin X-Axis"<br>
-                    "Head Spin Y-Axis"<br>
-                    "Head Spin Z-Axis"<br>
-                    "Look At Closest"<br>
-                    "Head Backwards"<br>
-                    "Head UpsideDown"<br>
-                    "Break Neck"<br>
-                    "Grab Head"<br>
-                    "Spin Hands"<br>
-                    "Spaz Arms"<br>
-                    "No Finger Movement"<br>
-                    "Disable Mouth Movement"<br>
-                    "Flip Hands"<br>
-                    "Ghost Monke"<br>
-                    "Toggle Ghost Monke"<br>
-                    "Invis Monke"<br>
-                    "Toggle Invis Monke"<br>
-                    "RGB Monke"<br>
-                    "Strobe Monke"<br>
-                    "Disguise"<br>
-                    "Hide Name On Leaderboard"<br>
-                    "Change Name To SpiderOnTop"<br>
-                    "Change Name To PBBV"<br>
-                    "Change Name To Nothing"<br>
-                    "Become PBBV"<br>
-                    "Become Daisy09"<br>
-                    "Loud HandTaps"<br>
-                    "Silent HandTaps"<br>
-                    "Normal HandTaps"<br>
-                    "Rapid HandTaps"<br>
-                    "No Tap Vibrations"<br>
-                    "Spaz Ropes"<br>
-                    "Ropes Up"<br>
-                    "Ropes Down"<br>
-                    "Freeze Ropes"<br>
-                    "Tag Self"<br>
-                    "Tag Aura"<br>
-                    "Tag Gun"<br>
-                    "Flick Tag Gun Right"<br>
-                    "Flick Tag Gun Left"<br>
-                    "Flick Tag Gun Both Hands"<br>
-                    "Tag All"<br>
-                    "Anti Tag"<br>
-                    "No Tag On Join"<br>
-                    "Hunt Tag Gun"<br>
-                    "Hunt Tag All"<br>
-                    "Hunt Tag Aura"<br>
-                    "Tp To Hunt Target"<br>
-                    "Esp On Hunt Target/Hunter"<br>
-                    "Kill All"<br>
-                    "Revive Self"<br>
-                    "Silent Aim"<br>
-                    "Swim EveryWhere"<br>
-                    "Water Gun"<br>
-                    "Splash Self"<br>
-                    "Water Bending"<br>
-                    "Sizeable Splash"<br>
-                    "Grab Balloon"<br>
-                    "Balloon Gun"<br>
-                    "Balloon Tracers"<br>
-                    "Spaz Balloon"<br>
-                    "Orbit Balloon Around You"<br>
-                    "Halo Balloon"<br>
-                    "Sizeable Balloon"<br>
-                    "Pop All Balloons"<br>
-                    "Random Sound Spam"<br>
-                    "Medal Sound Spam"<br>
-                    "Huge Cristal Sound Spam"<br>
-                    "Ak Sound Spam"<br>
-                    "Snipe Bug"<br>
-                    "Grab Bug"<br>
-                    "Bug Gun"<br>
-                    "Bug Tracers"<br>
-                    "Spaz Bug"<br>
-                    "Orbit Bug Around You"<br>
-                    "Halo Bug"<br>
-                    "Sizeable Bug"<br>
-                    "Make Bug Look At You"<br>
-                    "Snipe Bat"<br>
-                    "Grab Bat"<br>
-                    "Bat Gun"<br>
-                    "Bat Tracers"<br>
-                    "Spaz Bat"<br>
-                    "Orbit Bat Around You"<br>
-                    "Halo Bat"<br>
-                    "Sizeable Bat"<br>
-                    "Make Bat Look At You"<br>
-                    "Grab Ball"<br>
-                    "Ball Gun"<br>
-                    "Ball Tracers"<br>
-                    "Spaz Ball"<br>
-                    "Orbit Ball Around You"<br>
-                    "Halo Ball"<br>
-                    "Sizeable Ball"<br>
-                    "Hand Fly"<br>
-                    "Slingshot Fly"<br>
-                    "Fly Gun"<br>
-                    "Joystick Fly"<br>
-                    "WASD Fly"<br>
-                    "Trigger Fly"<br>
-                    "Grip Fly"<br>
-                    "Fly With Noclip"<br>
-                    "Iron Monke"<br>
-                    "Erase Trees"<br>
-                    "Erase TreeHouse"<br>
-                    "Erase Stump"<br>
-                    "Erase Gamemode Buttons"<br>
-                    "Low Gravity"<br>
-                    "High Gravity"<br>
-                    "No Gravity"<br>
-                    "Reverse Gravity"<br>
-                    "Draw Gun"<br>
-                    "Draw"<br>
-                    "Make Draw Bigger"<br>
-                    "Make Draw Smaller"<br>
-                    "Clear All Drawings"<br>
-                    "Swim Fast"<br>
-                    "Walk On Water"<br>
-                    "Disable Water"<br>
-                    "Fix Water"<br>
-                    "Ice Block Gun"<br>
-                    "Trampoline Block Gun"<br>
-                    "WaterBalloon Block Gun"<br>
-                    "Snow Block Gun"<br>
-                    "Mentos Block Gun"<br>
-                    "Rock Block Gun"<br>
-                    "Present Block Gun"<br>
-                    "Fish Food Block Gun"<br>
-                    "Slip floor"<br>
-                    "Bouncy Floor"<br>
-                    "WaterBalloon Floor"<br>
-                    "Snow Floor"<br>
-                    "Mentos Floor"<br>
-                    "Rock Floor"<br>
-                    "Present Floor"<br>
-                    "Fish Food Floor"<br>
-                    "Fix Floor"<br>
-                    "RGB Snowballs"<br>
-                    "Fast Thrower"<br>
-                    "Open Door"<br>
-                    "Close Door"<br>
-                    "Spam Open And Close Door"<br>
-                    "Big Platforms"<br>
-                    "Invis Platforms"<br>
-                    "Sticky Platforms"<br>
-                    "Invis Sticky Platforms"<br>
-                    "Trigger Platforms"<br>
-                    "Primary Platforms"<br>
-                    "Plank Platforms"<br>
-                    "Trigger Toggle Plats"<br>
-                    "Grip To Trigger Toggle Plats"<br>
-                    "Custom Platforms"<br>
-                    "Platform Gun"<br>
-                    "Remove All Platforms"<br>
-                    "Tp To Stump"<br>
-                    "CheckPoint Monke"<br>
-                    "Up and Down"<br>
-                    "Helicopter Monk"<br>
-                    "Fast Turn Speed"<br>
-                    "C4"<br>
-                    "Heaven Gun"<br>
-                    "Tp Gun"<br>
-                    "Tp To Random"<br>
-                    "Rig Gun"<br>
-                    "Destroy Gun"<br>
-                    "Destroy All"<br>
-                    "Copy Gun"<br>
-                    "Copy Closest"<br>
-                    "Car Monke"<br>
-                    "Wheel Mod"<br>
-                    "Slide Control"<br>
-                    "No Slip"<br>
-                    "Wall Walk"<br>
-                    "Punch Monke"<br>
-                    "Grab Rig"<br>
-                    "Grab Rocket"<br>
-                    "Smoke Effect"<br>
-                    "Launch Rocket"<br>
-                    "Sink In Sand"<br>
-                    "Horror Mode"<br>
-                    "Color All Black"<br>
-                    "Color All RGB"<br>
-                    "Color Code = Tiger Skin Color"<br>
-                    "FPS Boost"<br>
-                    "Low Hertz"<br>
-                    "Crash Self"<br>
-                    "No Wind Everyhere"<br>
-                    "RapidFire Slingshot"<br>
-                    "Vibrate Gun"<br>
-                    "Vibrate All"<br>
-                    "Slow Gun"<br>
-                    "Slow All"<br>
-                    "Demonic Hands"<br>
-                    "Particle Gun"<br>
-                    "Particle All"<br>
-                    "Particle Around You"<br>
-                    "Blind Gun"<br>
-                    "Blind All"<br>
-                    "Grab Gliders"<br>
-                    "Gliders Gun"<br>
-                    "Spaz Gliders"<br>
-                    <br>
-                    <h3>Settings</h3>
-                    "Return to Main"<br>
-                    "Right Hand"<br>
-                    "Notifications"<br>
-                    "FPS Counter"<br>
-                    "Disconnect Button"<br>
-                    "First Person Camera"<br>
-                    "Clear All Notifications"<br>
-                    "Unlock Comp"<br>
-                    "Accept TOS"<br>
-                    "Player Trail"<br>
-                    "Change Speed Boost Amount"<br>
-                    "Join Discord"<br>
-                    "Go To My Youtube"<br>
-                    "Flip Menu 180°"<br>
-                    "Flip Menu 90°"<br>
-                    "Change Menu Color"<br>
-                    "Time Of Day"<br>
-                    "Enable Rain"<br>
-                    "Disable Rain"<br>
-                    "Disable Leaves"<br>
-                    "Enable Leaves"<br>
-                    "Set Master"<br>
-                    "Anti Crash"<br>
-                    "Projectile Delay"<br>
-                    "Leave When Mod Joins"<br>
-                    "Update Board"<br>
-                    "Make Boards Blue"<br>
-                    "Fix Boards"<br>
-            </p7>
+    <section class="section">
+        <h1>What We Have</h1>
+        <div class="row">
+            <div class="col">
+                <h3>Spider Client V9 Features</h3>
+                <div class="scroll-container">
+                    <div class="scroll-content">
+                        <div class="feature-list">
+                            <ul>
+                                <li>"Settings"</li>
+                                <li>"Save Buttons"</li>
+                                <li>"Load Buttons"</li>
+                                <li>"Leave Lobby"</li>
+                                <li>"Join Random"</li>
+                                <li>"Quit Application"</li>
+                                <li>"Platforms"</li>
+                                <li>"Platforms V2"</li>
+                                <li>"Long Arms"</li>
+                                <li>"Weird Long Arms"</li>
+                                <li>"Super Monkey"</li>
+                                <li>"No Clip"</li>
+                                <li>"Anti Report"</li>
+                                <li>"Create Public"</li>
+                                <li>"Create Private"</li>
+                                <li>"Connect To EU Servers"</li>
+                                <li>"Connect To USW Servers"</li>
+                                <li>"Connect To USA Servers"</li>
+                                <li>"Disable Network Triggers"</li>
+                                <li>"Disable Try On Room"</li>
+                                <li>"Disable QuitBox"</li>
+                                <li>"Red SkyBox"</li>
+                                <li>"Blue SkyBox"</li>
+                                <li>"Green SkyBox"</li>
+                                <li>"Black SkyBox"</li>
+                                <li>"Anti Afk Kick"</li>
+                                <li>"Spam First Cosmetic Spot"</li>
+                                <li>"Spam Second Cosmetic Spot"</li>
+                                <li>"Spam Third Cosmetic Spot"</li>
+                                <li>"Spam All Cosmetic Spot"</li>
+                                <li>"Unreleased Sweater"</li>
+                                <li>"Finger Painter"</li>
+                                <li>"Admin Badge"</li>
+                                <li>"Tracers"</li>
+                                <li>"Tracers Orbit"</li>
+                                <li>"Beacons"</li>
+                                <li>"ESP"</li>
+                                <li>"Snake ESP"</li>
+                                <li>"Box ESP"</li>
+                                <li>"Bone ESP"</li>
+                                <li>"2D Monkes"</li>
+                                <li>"Big Monkes"</li>
+                                <li>"Small Monkes"</li>
+                                <li>"Tall Monkes"</li>
+                                <li>"Fix Monkes"</li>
+                                <li>"Speed Boost"</li>
+                                <li>"No Tag Freeze"</li>
+                                <li>"PBBV Walk"</li>
+                                <li>"Size Changer"</li>
+                                <li>"Bees"</li>
+                                <li>"Hands In Head"</li>
+                                <li>"Auto Jump"</li>
+                                <li>"Auto Pinch Climb"</li>
+                                <li>"Fake Oculas Menu"</li>
+                                <li>"Velocity Counter"</li>
+                                <li>"Right Arm Gun"</li>
+                                <li>"Left Arm Gun"</li>
+                                <li>"Spider Monke"</li>
+                                <li>"Weird Walk"</li>
+                                <li>"Menu Item"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <h3>Project Modding Features</h3>
+                <div class="scroll-container">
+                    <div class="scroll-content">
+                        <div class="feature-list">
+                            <ul>
+                                <li>"Long Arms"</li>
+                                <li>"Short Arms"</li>
+                                <li>"Platforms"</li>
+                                <li>"Super Monke"</li>
+                                <li>"No Clip"</li>
+                                <li>"Anti Report"</li>
+                                <li>"Create Public"</li>
+                                <li>"Create Private"</li>
+                                <li>"Connect To EU Servers"</li>
+                                <li>"Connect To USW Servers"</li>
+                                <li>"Connect To USA Servers"</li>
+                                <li>"Disable Network Triggers"</li>
+                                <li>"Disable Try On Room"</li>
+                                <li>"Disable QuitBox"</li>
+                                <li>"Red SkyBox"</li>
+                                <li>"Blue SkyBox"</li>
+                                <li>"Green SkyBox"</li>
+                                <li>"Black SkyBox"</li>
+                                <li>"Anti Afk Kick"</li>
+                                <li>"Spam First Cosmetic Spot"</li>
+                                <li>"Spam Second Cosmetic Spot"</li>
+                                <li>"Spam Third Cosmetic Spot"</li>
+                                <li>"Spam All Cosmetic Spot"</li>
+                                <li>"Unreleased Sweater"</li>
+                                <li>"Finger Painter"</li>
+                                <li>"Admin Badge"</li>
+                                <li>"Tracers"</li>
+                                <li>"Tracers Orbit"</li>
+                                <li>"Beacons"</li>
+                                <li>"ESP"</li>
+                                <li>"Snake ESP"</li>
+                                <li>"Box ESP"</li>
+                                <li>"Bone ESP"</li>
+                                <li>"2D Monkes"</li>
+                                <li>"Big Monkes"</li>
+                                <li>"Small Monkes"</li>
+                                <li>"Tall Monkes"</li>
+                                <li>"Fix Monkes"</li>
+                                <li>"Speed Boost"</li>
+                                <li>"No Tag Freeze"</li>
+                                <li>"PBBV Walk"</li>
+                                <li>"Size Changer"</li>
+                                <li>"Bees"</li>
+                                <li>"Hands In Head"</li>
+                                <li>"Auto Jump"</li>
+                                <li>"Auto Pinch Climb"</li>
+                                <li>"Fake Oculas Menu"</li>
+                                <li>"Velocity Counter"</li>
+                                <li>"Right Arm Gun"</li>
+                                <li>"Left Arm Gun"</li>
+                                <li>"Spider Monke"</li>
+                                <li>"Weird Walk"</li>
+                                <li>"Menu Item"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </section>
 
-    <section class="havee">
+    <!-- Optional: Add more sections if needed -->
 
-        <div class="have-col">
-            <h3>Project Modding Features</h3>
-            <p7>
-                <b>
-                    <br>
-                    "Long Arms"<br>
-                    "Short Arms"<br>
-                    "Platforms"<br>
-                    "Super Monke"<br>
-                    "Mosa Boost"<br>
-                    "Speed Boost"<br>
-                    "Nametags"<br>
-                    "Punch Monke"<br>
-                    "Up and Down"<br>
-                    "No Clip"<br>
-                    "Ghost Monke"<br>
-                    "Trigger Platforms"<br>
-                    "Build Platforms"<br>
-                    "Slide Control"<br>
-                    "No Tag Freeze"<br>
-                    "Tag Freeze"<br>
-                    "Tag Gun"<br>
-                    "Tag All"<br>
-            </p7>
-        </div>
-
-    </section>
-
-
-
-
+    <script>
+        // Function to handle navigation with fade-out effect
+        function navigate(event, url) {
+            event.preventDefault(); // Prevent the default link behavior
+            const overlay = document.getElementById('overlay');
+            
+            // Start fading out the overlay
+            overlay.style.opacity = '1';
+            
+            // Redirect after the fade-out
+            setTimeout(() => {
+                window.location.href = url; // Redirect to the URL
+            }, 500); // Match this duration with the CSS transition duration
+        }
+        
+        // Attach event listeners to nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (event) => {
+                navigate(event, link.href);
+            });
+        });
+        
+        // Initial page load - fade out the overlay after content loads
+        window.addEventListener('load', () => {
+            const overlay = document.getElementById('overlay');
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+            }, 500); // Delay the fade-out to give time for the content to render
+        });
+    </script>
 
 </body>
 </html>
